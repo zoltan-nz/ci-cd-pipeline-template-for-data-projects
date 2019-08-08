@@ -1,0 +1,49 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+pytest = "*"
+pytest-testmon = "*"
+pytest-watch = "*"
+coverage = "*"
+pylint = "*"
+pylint-flask = "*"
+setuptools = "*"
+wheel = "*"
+mypy = "*"
+mypy-extensions="*"
+
+[packages]
+flask = "*"
+waitress = "*"
+pandas = "*"
+pylint = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+setup = "pipenv install --dev"
+clean = "rm -rf .pytest_cache .tmontmp .coverage .testmondata htmlcov build dist flaskr.egg-info"
+lock-req = "sh -c 'pipenv lock -r > requirements.txt'"
+server-prod = "sh -c 'FLASK_APP=my_hello_world_app FLASK_ENV=production waitress-serve --call my_hello_world_app:start'"
+server-watch = "sh -c 'FLASK_APP=my_hello_world_app:start FLASK_ENV=development pipenv run flask run'"
+lint = "pylint --load-plugins pylint_flask my_hello_world_app tests"
+format = "black ."
+test = "pytest"
+test-watch = "ptw -- --testmon"
+cov = "coverage run -m pytest"
+cov-report = "sh -c 'pipenv run cov && coverage report'"
+cov-html = "sh -c 'pipenv run cov && coverage html && open htmlcov/index.html'"
+build = 'pip wheel -w dist .'
+#build-docker = "sh -c 'pipenv run build && IMAGE_TAG=${IMAGE_TAG:-latest}; docker build --build-arg image_name=my_hello_world_app:$IMAGE_TAG --tag my_hello_world_app:$IMAGE_TAG .'"
+#deploy-kubernetes-local = "sh -c 'pipenv run build-docker && IMAGE_TAG=${IMAGE_TAG:-latest} envsubst < kubernetes/local.deployment.yaml | kubectl apply -f -'"
+#deploy-google-cloud = "sh -c 'envsubst < kubernetes/google-cloud.deployment.yaml | kubectl apply -f -'"
+#deploy-heroku = "sh -c ''"
