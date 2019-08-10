@@ -23,5 +23,7 @@ build/
 .env
 .prettierrc
 
+.dpl
+
 gc-service-account-key.json
 gc-project-id.txt

@@ -8,6 +8,7 @@ Implementation notes:
 - Add LICENSE file
 - Add python project files (`Pipfile`, `pylintrc`, `requirements.txt`, `setup.cfg`, `setup.py`)
 - Dockerfile for production
+- Add Gitlab CI, Procfile
 
 Pipenv run options:
 
