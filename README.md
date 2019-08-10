@@ -7,6 +7,7 @@ Implementation notes:
 - Add editorconfig
 - Add LICENSE file
 - Add python project files (`Pipfile`, `pylintrc`, `requirements.txt`, `setup.cfg`, `setup.py`)
+- Dockerfile for production
 
 Pipenv run options:
 
