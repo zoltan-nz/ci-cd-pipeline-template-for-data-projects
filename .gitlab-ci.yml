@@ -31,26 +31,20 @@ test:
 staging:
   stage: deploy
   script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=my-hello-world-app-staging --api-key=$HEROKU_STAGING_API_KEY
+    - echo "TODO Add deployment steps to staging environment."
   environment:
     name: staging
-    url: https://my-hello-world-app-staging.herokuapp.com
+    url: https://gitlab.com/zoltan-nz/ci-cd-pipeline-template-for-data-projects
   only:
     - master
 
 production:
   stage: deploy
   script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=my-hello-world-app-production --api-key=$HEROKU_PRODUCTION_API_KEY
+    - echo "TODO Add deployment steps to production environment."
   when: manual
   environment:
     name: production
-    url: https://my-hello-world-app-production.herokuapp.com
+    url: https://gitlab.com/zoltan-nz/ci-cd-pipeline-template-for-data-projects
   only:
     - master

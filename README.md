@@ -1,15 +1,5 @@
 # CI/CD Pipeline Template for Data Projects
 
-Implementation notes:
-
-- Add basic Flask app to web_api folder
-- Add simple pytest
-- Add editorconfig
-- Add LICENSE file
-- Add python project files (`Pipfile`, `pylintrc`, `requirements.txt`, `setup.cfg`, `setup.py`)
-- Dockerfile for production
-- Add Gitlab CI, Procfile
-
 Pipenv run options:
 
 | Pipenv task               | Description                                                                          |
@@ -28,10 +18,20 @@ Pipenv run options:
 | `pipenv run build`        | Build python binary version                                                          |
 | `pipenv run build-docker` | Run a local docker image                                                             |
 
-## Format Markdown files with prettier
+## Implementation tasks:
+
+- [x] Add basic Flask app to web_api folder
+- [x] Add simple pytest
+- [x] Add editorconfig
+- [x] Add LICENSE file
+- [x] Add python project files (`Pipfile`, `pylintrc`, `requirements.txt`, `setup.cfg`, `setup.py`)
+- [x] Dockerfile for production
+- [x] Add Gitlab CI, Procfile
+
+### Format Markdown files with prettier
 
 Prerequisite: Node.js and `prettier` command line tool. (https://prettier.io/)
 
 ```
-prettier "**/*.md" --write
+prettier "**/*.md" --write --parser=markdown
 ```

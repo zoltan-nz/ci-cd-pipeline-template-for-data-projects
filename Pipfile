@@ -24,7 +24,7 @@ pylint = "*"
 mypy = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
@@ -44,6 +44,5 @@ cov-report = "sh -c 'pipenv run cov && coverage report'"
 cov-html = "sh -c 'pipenv run cov && coverage html && open htmlcov/index.html'"
 build = 'pip wheel -w dist .'
 build-docker = "sh -c 'pipenv run build && IMAGE_TAG=${IMAGE_TAG:-latest}; docker build --build-arg docker_image_tag=$IMAGE_TAG --tag my_hello_world_app:$IMAGE_TAG .'"
-#deploy-kubernetes-local = "sh -c 'pipenv run build-docker && IMAGE_TAG=${IMAGE_TAG:-latest} envsubst < kubernetes/local.deployment.yaml | kubectl apply -f -'"
-#deploy-google-cloud = "sh -c 'envsubst < kubernetes/google-cloud.deployment.yaml | kubectl apply -f -'"
-#deploy-heroku = "sh -c ''"
+deploy-kubernetes-local = "sh -c 'pipenv run build-docker && IMAGE_TAG=${IMAGE_TAG:-latest} envsubst < kubernetes/local.deployment.yaml | kubectl apply -f -'"
+deploy-google-cloud = "sh -c 'envsubst < kubernetes/google-cloud.deployment.yaml | kubectl apply -f -'"
