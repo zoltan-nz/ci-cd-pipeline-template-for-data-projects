@@ -1,5 +1,74 @@
 # CI/CD Pipeline Template for Data Projects
 
+## How to use this template?
+
+Install Python v3.8. Suggested way to install Python on your developer machine is `pyenv`. On macOS, you can use the following command.
+
+```
+$ brew install pyenv
+$ pyenv install 3.8.0
+$ pyenv global 3.8.0
+```
+
+Install `pipenv`.
+
+```
+$ pip install pipenv
+```
+
+Run `setup` script from this project.
+
+```
+$ pipenv run setup
+```
+
+### Run the application
+
+In development mode on http://localhost:5000
+
+```
+$ pipenv run server-watch
+```
+
+In production mode on http://localhost:8080
+
+```
+$ pipenv run server-prod
+```
+
+### Linting
+
+```
+$ pipenv run lint
+```
+
+### Code formatter
+
+```
+$ pipenv run format
+```
+
+### Type checker
+
+```
+$ pipenv run lint-types
+```
+
+### Testing
+
+You can run test only once or in watch mode, which will rerun the test when files change detected.
+
+```
+$ pipenv run test
+$ pipenv run test-watch
+```
+
+Check the coverage report in your browser
+
+```
+pipenv run cov-html
+```
+
 Pipenv run options:
 
 | Pipenv task               | Description                                                                          |
@@ -10,6 +79,7 @@ Pipenv run options:
 | `pipenv run server-prod`  | Run your Flask app in production.                                                    |
 | `pipenv run server-watch` | Run your Flask app in dev mode with watch task.                                      |
 | `pipenv run lint`         | Run pylint.                                                                          |
+| `pipenv run lint-types` | Run `mypy` type checking linter.
 | `pipenv run format`       | Run the `black` code formatter.                                                      |
 | `pipenv run test`         | Run `pytest`.                                                                        |
 | `pipenv run test-watch`   | Run `pytest` in watch mode.                                                          |
@@ -17,6 +87,8 @@ Pipenv run options:
 | `pipenv run cov-html`     | Generate a code coverage report in html format.                                      |
 | `pipenv run build`        | Build python binary version                                                          |
 | `pipenv run build-docker` | Run a local docker image                                                             |
+
+
 
 ## Implementation tasks:
 
@@ -26,7 +98,8 @@ Pipenv run options:
 - [x] Add LICENSE file
 - [x] Add python project files (`Pipfile`, `pylintrc`, `requirements.txt`, `setup.cfg`, `setup.py`)
 - [x] Dockerfile for production
-- [x] Add Gitlab CI, Procfile
+- [x] Add Gitlab CI
+- [x] Add strict typing support with `mypy`
 
 ### Format Markdown files with prettier
 
