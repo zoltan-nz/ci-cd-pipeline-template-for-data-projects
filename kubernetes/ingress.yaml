@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ${KUBE_INGRESS_NAME}
+  namespace: ${KUBE_NAMESPACE}
+spec:
+  rules:
+  - host: ${KUBE_PUBLIC_APP_DOMAIN}
+    http:
+      paths:
+      - backend:
+          serviceName: ${KUBE_SERVICE_NAME}
+          servicePort: ${KUBE_SERVICE_EXTERNAL_PORT}

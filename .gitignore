@@ -5,6 +5,7 @@
 *.pyc
 __pycache__/
 .mypy_cache
+.pytest_cache
 
 instance/
 
@@ -24,6 +25,9 @@ build/
 .prettierrc
 
 .dpl
+
+secrets/**.*
+!secrets/example-secret.json
 
 gc-service-account-key.json
 gc-project-id.txt

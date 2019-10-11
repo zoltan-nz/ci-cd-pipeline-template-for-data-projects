@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${KUBE_DEPLOYMENT_NAME}
+  namespace: ${KUBE_NAMESPACE}
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ${KUBE_APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${KUBE_APP_NAME}
+    spec:
+      volumes:
+        - name: example-secret
+          secret:
+            secretName: example-secret
+      containers:
+        - name: ${KUBE_APP_NAME}
+          image: ${KUBE_IMAGE_NAME}
+          imagePullPolicy: ${KUBE_IMAGE_PULL_POLICY}
+          ports:
+          - containerPort: ${KUBE_CONTAINER_PORT}
+          volumeMounts:
+            - name: example-secret
+              mountPath: "/home/app/secrets/"
+              readOnly: true
+          env:
+            - name: EXAMPLE_SECRET
+              value: "/home/app/secrets/example-secret.json"
