@@ -94,6 +94,10 @@ Pipenv run options:
 | `pipenv run build`        | Build python binary version.                                                         |
 | `pipenv run build-docker` | Run a local docker image.                                                            |
 
+### Replace `my_hello_world_app` to `your_app_name`
+
+You can use your favourite code editor's "Find and Replace" tool to replace all `my_hello_world_app` reference to your own `app_name`, including the main module name and folder.
+
 ## Kubernetes and Google Cloud
 
 ## Pipeline stages
