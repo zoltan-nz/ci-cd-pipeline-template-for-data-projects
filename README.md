@@ -2,13 +2,15 @@
 
 ## How to use this template?
 
-Install Python v3.8. Suggested way to install Python on your developer machine is `pyenv`. On macOS, you can use the following command.
+Install Python `v3.8`. Suggested way to install Python on your developer machine is `pyenv`. On macOS, you can use the following commands.
 
 ```
 $ brew install pyenv
 $ pyenv install 3.8.0
 $ pyenv global 3.8.0
 ```
+
+- Find more detailed instruction on [`pyenv` project website](https://github.com/pyenv/pyenv#installation).
 
 Install `pipenv`.
 
@@ -63,10 +65,10 @@ $ pipenv run test
 $ pipenv run test-watch
 ```
 
-Check the coverage report in your browser
+Check the coverage report in your browser.
 
 ```
-pipenv run cov-html
+$ pipenv run cov-html
 ```
 
 Pipenv run options:
@@ -85,8 +87,8 @@ Pipenv run options:
 | `pipenv run test-watch`   | Run `pytest` in watch mode.                                                          |
 | `pipenv run cov`          | Run code coverage report.                                                            |
 | `pipenv run cov-html`     | Generate a code coverage report in html format.                                      |
-| `pipenv run build`        | Build python binary version                                                          |
-| `pipenv run build-docker` | Run a local docker image                                                             |
+| `pipenv run build`        | Build python binary version.                                                         |
+| `pipenv run build-docker` | Run a local docker image.                                                            |
 
 ## Kubernetes and Google Cloud
 
