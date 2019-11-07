@@ -77,26 +77,29 @@ $ pipenv run cov-html
 
 Pipenv run options:
 
-| Pipenv task               | Description                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------ |
-| `pipenv run setup`        | Setup local pip environment. Run it first.                                           |
-| `pipenv run clean`        | Clean up temp files.                                                                 |
-| `pipenv run lock-req`     | Update `requirements.txt`. Run it if you added or upgraded some packages in Pipfile. |
-| `pipenv run server-prod`  | Run your Flask app in production.                                                    |
-| `pipenv run server-watch` | Run your Flask app in dev mode with watch task.                                      |
-| `pipenv run lint`         | Run pylint.                                                                          |
-| `pipenv run lint-types`   | Run `mypy` type checking linter.                                                     |
-| `pipenv run format`       | Run the `black` code formatter.                                                      |
-| `pipenv run test`         | Run `pytest`.                                                                        |
-| `pipenv run test-watch`   | Run `pytest` in watch mode.                                                          |
-| `pipenv run cov`          | Run code coverage report.                                                            |
-| `pipenv run cov-html`     | Generate a code coverage report in html format.                                      |
-| `pipenv run build`        | Build python binary version.                                                         |
-| `pipenv run build-docker` | Run a local docker image.                                                            |
+| Pipenv task                          | Description                                                                                    |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `pipenv run setup`                   | Setup local pip environment. Run it first.                                                     |
+| `pipenv run clean`                   | Clean up temp files.                                                                           |
+| `pipenv run lock-req`                | Update `requirements.txt`. Run it if you added or upgraded some packages in Pipfile.           |
+| `pipenv run server-prod`             | Run your Flask app in production.                                                              |
+| `pipenv run server-watch`            | Run your Flask app in dev mode with watch task.                                                |
+| `pipenv run lint`                    | Run pylint.                                                                                    |
+| `pipenv run lint-types`              | Run `mypy` type checking linter.                                                               |
+| `pipenv run format`                  | Run the `black` code formatter.                                                                |
+| `pipenv run test`                    | Run `pytest`.                                                                                  |
+| `pipenv run test-watch`              | Run `pytest` in watch mode.                                                                    |
+| `pipenv run cov`                     | Run code coverage report.                                                                      |
+| `pipenv run cov-html`                | Generate a code coverage report in html format.                                                |
+| `pipenv run build`                   | Build python binary version.                                                                   |
+| `pipenv run build-docker`            | Run a local docker image.                                                                      |
+| `pipenv run deploy-kubernetes-local` | Run ./scripts/local-kubernetes-deployment.sh script to deploy in your local Kubernetes cluster |
 
-### Replace `my_hello_world_app` to `your_app_name`
+### Replace `my_hello_world_app` and `my-hello-world-app` to `your_app_name` and `your-app-name`
 
-You can use your favourite code editor's "Find and Replace" tool to replace all `my_hello_world_app` reference to your own `app_name`, including the main module name and folder.
+Please note that Python naming convention expects snake case names (ex. `snake_case_name`), however labels and names in Kubernetes has to be kebab case (ex. `kebab-case`). Therefor, you should replace both in your own app.
+
+You can use your favourite code editor's "Find and Replace" tool to replace all `my_hello_world_app` and `my-hello-world-app` reference to your own `app_name` and `app-name`, including the main module folder's name and all the Kubernetes configuration variables.
 
 ## Kubernetes and Google Cloud
 
@@ -125,11 +128,12 @@ You can use your favourite code editor's "Find and Replace" tool to replace all 
 | KUBE_INGRESS_NAME          | Ingress controller creates subdomains. This is just the name of the Controller. E.g. `my-app-router`.                                                                                                                                             |
 | KUBE_PUBLIC_APP_DOMAIN     | The public domain address. It can be the production domain or a subdomain. E.g. `example.com`, `staging.example.com`, `some-review-branch.1.2.3.4.nip.io`                                                                                         |
 | KUBE_IMAGE_PULL_POLICY     | Use "Always" in production, Docker for Mac Kubernetes needs "Never" value for locally built images.                                                                                                                                               |
+| KUBE_EXAMPLE_SECRET_NAME   | The name of the secret. It is used to creating the secret and using inside a deployment.                                                                                                                                                          |
 | KUBE_EXAMPLE_SECRET        | A base64 encoded json string which will be written out using `example-secret.json` filename in a Secret Volume and attached to `/home/app/secrets/`. Search for `example-secret` and `EXAMPLE_SECRET` strings to see, how can you manage secrets. |
 
 ## Google Cloud environment variables
 
-This template repository supports Google Cloud out of the box. Google Cloud access keys and variables are stored in environment variables. These environment variables are used only in Gitlab CI. In your repository seetings, you can setup environment variables which are injected in Gitlab Runner.
+This template repository supports Google Cloud out of the box. Google Cloud access keys and variables are stored in environment variables. These environment variables are used only in Gitlab CI. In your repository settings, you can setup environment variables which are injected in Gitlab Runner.
 
 In your local environment you can store keys in `./secrets` folder. Never commit any key or id in your source control system.
 
@@ -142,7 +146,7 @@ In your local environment you can store keys in `./secrets` folder. Never commit
 | GC_BASE_DOMAIN         | The base domain name where your cluster is exposed, usually setup by ingress controller |
 | GC_EXAMPLE_SECRET      | An example secret if your project need it                                               |
 
-## Manifest templates
+You have to setup the above environment variables in your GitLab CI/CD: GitLab > Settings > CI/CD > Variables.
 
 These files are placed in `kubernetes` folder and they are used in `.gitlab-ci.yaml`.
 
@@ -181,7 +185,7 @@ Deploy the application in local Kubernetes environment. Local Kubernetes is Dock
 $ kubectl config set-context docker-desktop
 ```
 
-- Use `octant` to check your cluster: https://github.com/vmware-tanzu/octant
+- Use `octant` to check your cluster: <https://github.com/vmware-tanzu/octant>
 - [Install NGINX Ingress Controller on Docker for Mac](https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac)
 - Build a local image.
 
@@ -204,6 +208,8 @@ Install Gitlab Runner on your local machine (on macOS):
 ```
 $ brew install gitlab-runner
 ```
+
+More details about local Gitlab Runner installation: <https://docs.gitlab.com/runner/#install-gitlab-runner>
 
 Add Google Cloud secret keys to your `./secrets` folder, adjust your environment variables in the script and just run it to see, how is that work.
 

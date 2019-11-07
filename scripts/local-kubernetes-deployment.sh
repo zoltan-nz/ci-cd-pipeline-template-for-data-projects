@@ -10,9 +10,18 @@ export KUBE_CONTAINER_PORT=8080
 export KUBE_IMAGE_PULL_POLICY=Never
 
 export KUBE_INGRESS_NAME=my-hello-world-app-ingress
-export KUBE_PUBLIC_APP_DOMAIN=recommender.lvh.me
+export KUBE_PUBLIC_APP_DOMAIN=my-hello-world-app.lvh.me
 export KUBE_SERVICE_NAME=my-hello-world-app-service
 export KUBE_SERVICE_EXTERNAL_PORT=9090
+
+export KUBE_EXAMPLE_SECRET_NAME=example-secret
+
+KUBE_EXAMPLE_SECRET_FILE=./secrets/example-secret.json
+if test -f "$KUBE_EXAMPLE_SECRET_FILE"; then
+  export KUBE_EXAMPLE_SECRET=$(base64 $KUBE_EXAMPLE_SECRET_FILE)
+else
+  echo "$KUBE_EXAMPLE_SECRET_FILE does not exist"
+fi
 
 envsubst < ./kubernetes/namespace.yaml | kubectl apply -f -
 envsubst < ./kubernetes/secret.yaml | kubectl apply -f -

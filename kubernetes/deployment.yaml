@@ -16,9 +16,9 @@ spec:
         app: ${KUBE_APP_NAME}
     spec:
       volumes:
-        - name: example-secret
+        - name: secrets
           secret:
-            secretName: example-secret
+            secretName: ${KUBE_EXAMPLE_SECRET_NAME}
       containers:
         - name: ${KUBE_APP_NAME}
           image: ${KUBE_IMAGE_NAME}
@@ -26,7 +26,7 @@ spec:
           ports:
           - containerPort: ${KUBE_CONTAINER_PORT}
           volumeMounts:
-            - name: example-secret
+            - name: secrets
               mountPath: "/home/app/secrets/"
               readOnly: true
           env:

@@ -8,5 +8,5 @@ gitlab-runner exec docker\
   --env GC_SERVICE_ACCOUNT_KEY="$(<./secrets/gc-service-account-key.json)"\
   --env GC_CLUSTER_NAME="standard-cluster-1"\
   --env GC_ZONE="us-west1-b"\
-  --env GC_BASE_DOMAIN="$GC_BASE_DOMAIN"\
-  review_deploy
+  --env GC_BASE_DOMAIN="$(<./secrets/gc-base-domain.txt)"\
+  test
