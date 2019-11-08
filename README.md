@@ -1,8 +1,8 @@
 # CI/CD Pipeline Template for Data Projects
 
-Data science, AI and machine learning projects can get benefits from traditional software developer methodologies. This repository is a template for Python based data analysts application. It helps to bootstrap a local developer environment. Additionally, it creates a framework for GitLab CI/CD pipeline and Kubernetes deployment.
+Data science, AI and machine learning projects can get benefits from traditional software development methodologies. This repository is a template for python based data analysts applications. It helps to bootstrap a local developer environment. Additionally, it creates a framework for GitLab CI/CD pipeline and Kubernetes deployment.
 
-This project is mainly tested on macOS and Linux, but it should work on Windows as well. Please open an issue on GitHub or GitLab if you find something which should be improved.
+This project is mainly tested on macOS and Linux, but it should work on Windows as well. Please open an issue on [GitHub](https://github.com/zoltan-nz/ci-cd-pipeline-template-for-data-projects/issues) or [GitLab](https://gitlab.com/zoltan-nz/ci-cd-pipeline-template-for-data-projects/issues) if you find something which should be improved.
 
 ## How to use this template?
 
