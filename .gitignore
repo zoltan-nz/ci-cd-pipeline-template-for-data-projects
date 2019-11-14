@@ -29,5 +29,6 @@ build/
 secrets/**.*
 !secrets/example-secret.json
 
+gc-base-domain.txt
 gc-service-account-key.json
 gc-project-id.txt
